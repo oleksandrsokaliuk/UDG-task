@@ -1,3 +1,5 @@
+import "./styles/table.css";
+
 const Table = ({ tableData, setCsvData }) => {
   const { data } = tableData;
   const withoutHeader = data && data.slice(1);
@@ -19,15 +21,6 @@ const Table = ({ tableData, setCsvData }) => {
                     defaultValue={str}
                     onBlur={(e) => {
                       setCsvData((prevData) => {
-                        // prevData.data.map((subarray, indx) => {
-                        //   if (indx === idx + 1) {
-                        //     return subarray.map((value, subIndx) =>
-                        //       subIndx === index ? e.target.value : value
-                        //     );
-                        //   } else {
-                        //     return subarray;
-                        //   }
-                        // })
                         const newData = [...prevData.data];
                         newData[idx + 1] = [...newData[idx + 1]];
                         newData[idx + 1][index] = e.target.value;
