@@ -39,3 +39,17 @@ ul li:hover {
 ul li a {
   padding: 10px 20px;
 }
+
+input {
+  border: none;
+}
+
+tbody > tr:nth-child(odd),
+tbody > tr:nth-child(odd) input {
+  background: #018df1;
+}
+
+tbody > tr:nth-child(even),
+tbody > tr:nth-child(even) input {
+  background: #76d3fc;
+}
