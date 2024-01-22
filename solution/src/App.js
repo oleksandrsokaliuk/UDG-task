@@ -40,7 +40,7 @@ function App() {
   data={...}
 /> */}
       {csvData !== undefined && (
-        <Table tableData={csvData} setCsvData={setCsvData} />
+        <Table tableData={csvData} setCsvData={setCsvData} itemsPerPage={10} />
       )}
     </>
   );
