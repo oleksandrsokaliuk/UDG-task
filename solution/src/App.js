@@ -4,14 +4,12 @@ import { usePapaParse } from "react-papaparse";
 import axios from "axios";
 import { Pie } from "react-chartjs-2";
 import Table from "./components/Table";
+import ChartPie from "./components/Chart";
 
 function App() {
   const { readString, unparse } = usePapaParse();
   const [csvData, setCsvData] = useState(undefined);
   const getDataFromFile = async () => {
-    console.log(
-      `${process.env.REACT_APP_SERVER}${process.env.REACT_APP_SERVER_PORT}/`
-    );
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER}${process.env.REACT_APP_SERVER_PORT}/`
@@ -42,6 +40,7 @@ function App() {
       {csvData !== undefined && (
         <Table tableData={csvData} setCsvData={setCsvData} itemsPerPage={10} />
       )}
+      {csvData && <ChartPie clothes={csvData} />}
     </>
   );
 }

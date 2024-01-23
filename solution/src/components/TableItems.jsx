@@ -7,8 +7,6 @@ const TableItems = ({ currentItems, setCsvData }) => {
         currentItems.map((row, idx) => (
           <tr key={`${row[0]}`}>
             {row.map((str, index) => {
-              console.log({ indexTr: `${row[0]}` });
-              console.log({ indexTd: `${str}_${row[1]}` });
               return (
                 <td key={`${str}_${row[1]}_${index}`}>
                   <input
