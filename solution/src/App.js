@@ -7,7 +7,7 @@ import Table from "./components/Table";
 import ChartPie from "./components/Chart";
 
 function App() {
-  const { readString, unparse } = usePapaParse();
+  const { readString, unparse, jsonToCSV } = usePapaParse();
   const [csvData, setCsvData] = useState(undefined);
   const getDataFromFile = async () => {
     try {
@@ -20,6 +20,20 @@ function App() {
           setCsvData(results);
         },
       });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const postNewData = async () => {
+    const jsonString = JSON.stringify(csvData.data);
+    const dataCSV = jsonToCSV(jsonString);
+    console.log({ dataCSV });
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER}${process.env.REACT_APP_SERVER_PORT}/`,
+        { data: jsonString }
+      );
+      console.log({ response });
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +52,13 @@ function App() {
   data={...}
 /> */}
       {csvData !== undefined && (
-        <Table tableData={csvData} setCsvData={setCsvData} itemsPerPage={10} />
+        <Table
+          tableData={csvData}
+          setCsvData={setCsvData}
+          itemsPerPage={10}
+          postNewData={postNewData}
+          csvData={csvData}
+        />
       )}
       {csvData && <ChartPie clothes={csvData} />}
     </>

@@ -2,8 +2,15 @@ import { useState } from "react";
 import TableItems from "./TableItems";
 import "./styles/table.css";
 import ReactPaginate from "react-paginate";
+import SaveTableButton from "./SaveTableButton";
 
-const Table = ({ tableData, setCsvData, itemsPerPage }) => {
+const Table = ({
+  tableData,
+  csvData,
+  setCsvData,
+  itemsPerPage,
+  postNewData,
+}) => {
   const { data } = tableData;
   const withoutHeader = data && data.slice(1);
   const [itemOffset, setItemOffset] = useState(0);
@@ -15,6 +22,21 @@ const Table = ({ tableData, setCsvData, itemsPerPage }) => {
     const newOffset = (event.selected * itemsPerPage) % withoutHeader.length;
     setItemOffset(newOffset);
   };
+
+  const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(false);
+
+  const addNewItem = () => {
+    const emptyValues = Array.from(
+      { length: csvData.data[0].length },
+      () => undefined
+    );
+    setCsvData((prevItems) => {
+      console.log({ prevItems: prevItems.data });
+      const newItems = [...prevItems.data];
+      newItems.splice(endOffset, 0, emptyValues);
+      return { data: newItems };
+    });
+  };
   return (
     <div className="table-wrapper">
       <div className="table-scroll">
@@ -25,9 +47,24 @@ const Table = ({ tableData, setCsvData, itemsPerPage }) => {
             </tr>
           </thead>
           <tbody>
-            <TableItems currentItems={currentItems} setCsvData={setCsvData} />
+            <TableItems
+              currentItems={currentItems}
+              setCsvData={setCsvData}
+              setIsSaveButtonEnabled={setIsSaveButtonEnabled}
+              itemOffset={itemOffset}
+            />
           </tbody>
         </table>
+        <div className="btns-container">
+          <button className="btn-add" onClick={addNewItem}>
+            Add New Item
+          </button>
+          <SaveTableButton
+            isSaveButtonEnabled={isSaveButtonEnabled}
+            setIsSaveButtonEnabled={setIsSaveButtonEnabled}
+            postNewData={postNewData}
+          />
+        </div>
       </div>
       <ReactPaginate
         breakLabel="..."

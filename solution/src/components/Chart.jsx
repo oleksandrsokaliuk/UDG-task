@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
@@ -39,8 +38,7 @@ const ChartPie = ({ clothes }) => {
 
   const replaceEmpty = (value) =>
     value !== undefined && value !== "" ? value : "Nicht angegeben";
-
-  const backgroundColors = genderData.map(() => getRandomColor());
+  const backgroundColors = () => genderData.map(() => getRandomColor());
   console.log({ test2: uniqueGenders.map(replaceEmpty) });
   return (
     <Pie

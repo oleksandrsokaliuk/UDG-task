@@ -5,6 +5,7 @@
 
 .table-scroll {
   overflow-x: auto;
+  position: relative;
 }
 
 .table-wrapper > table {
@@ -52,4 +53,48 @@ tbody > tr:nth-child(odd) input {
 tbody > tr:nth-child(even),
 tbody > tr:nth-child(even) input {
   background: #76d3fc;
+}
+
+.btns-container {
+  /* position: sticky;
+  bottom: 50px;
+  left: 20px; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+  height: 40px;
+}
+
+.btn-add {
+  width: 100px;
+  padding: 5px 20px;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.8;
+}
+
+.btn-add:hover {
+  opacity: 1;
+}
+
+.save-btn {
+  width: 40px;
+  height: 100%;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+}
+
+.save-btn:hover {
+  opacity: 1;
+}
+
+.save-btn:disabled {
+  display: none;
 }
