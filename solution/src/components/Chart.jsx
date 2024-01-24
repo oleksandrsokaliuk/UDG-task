@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
-const ChartPie = ({ clothes }) => {
+const ChartPie = ({ items, criteria }) => {
   const getRandomColor = () => {
     return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
       Math.random() * 256
@@ -10,26 +10,28 @@ const ChartPie = ({ clothes }) => {
   };
 
   const [backgroundColors, setBackgroundColors] = useState(() =>
-    Array.from({ length: clothes.data.length - 1 }, getRandomColor)
+    Array.from({ length: items.length - 1 }, getRandomColor)
   );
 
   useEffect(() => {
     setBackgroundColors((prevColors) =>
       Array.from(
-        { length: clothes.data.length - 1 },
+        { length: items.length - 1 },
         (_, index) => prevColors[index] || getRandomColor()
       )
     );
-  }, [clothes.data.length]);
+  }, [items.length]);
 
-  const genders = clothes.data.slice(1).map((item) => item[5]); // тут принимается как раз критерий Geschlecht
-  const uniqueGenders = [...new Set(genders)];
+  const selectedCriteria = items
+    .slice(1)
+    .map((item) => item[items[0].findIndex((element) => element === criteria)]); // тут принимается как раз критерий Geschlecht
+  const uniqueSelectedCriteria = [...new Set(selectedCriteria)];
 
-  const genderData = uniqueGenders.map((gender) => {
-    const genderWithoutUndefined = genders.map((gendParent) =>
+  const selectedCriteriasItems = uniqueSelectedCriteria.map((gender) => {
+    const genderWithoutUndefined = selectedCriteria.map((gendParent) =>
       gendParent === undefined ? "" : gendParent
     );
-    const count = genders
+    const count = selectedCriteria
       .map((gendParent) => (gendParent === undefined ? "" : gendParent))
       .filter((g) => g === gender).length;
 
@@ -42,11 +44,11 @@ const ChartPie = ({ clothes }) => {
   return (
     <Pie
       data={{
-        labels: [...new Set(uniqueGenders.map(replaceEmpty))],
+        labels: [...new Set(uniqueSelectedCriteria.map(replaceEmpty))],
         datasets: [
           {
-            label: "Количество товаров по полу",
-            data: genderData.map((item) => item.count),
+            label: `Anzahl der Artikel nach ${criteria}`,
+            data: selectedCriteriasItems.map((item) => item.count),
             backgroundColor: backgroundColors,
           },
         ],

@@ -60,7 +60,9 @@ function App() {
           csvData={csvData}
         />
       )}
-      {csvData && <ChartPie clothes={csvData} />}
+      {csvData && (
+        <ChartPie items={csvData.data} criteria={csvData.data[0][5]} />
+      )}
     </>
   );
 }
