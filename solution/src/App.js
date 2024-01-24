@@ -5,9 +5,10 @@ import axios from "axios";
 import { Pie } from "react-chartjs-2";
 import Table from "./components/Table";
 import ChartPie from "./components/Chart";
+import CriteriaSelect from "./components/CriteriaSelect";
 
 function App() {
-  const { readString, unparse, jsonToCSV } = usePapaParse();
+  const { readString, jsonToCSV } = usePapaParse();
   const [csvData, setCsvData] = useState(undefined);
   const getDataFromFile = async () => {
     try {
@@ -46,6 +47,11 @@ function App() {
     console.log({ csvData });
   }, [csvData]);
 
+  const [selectedCriteria, setSelectedCriteria] = useState();
+  useEffect(() => {
+    console.log({ selectedCriteria });
+  }, [selectedCriteria]);
+
   return (
     <>
       {/* <Pie
@@ -61,7 +67,14 @@ function App() {
         />
       )}
       {csvData && (
-        <ChartPie items={csvData.data} criteria={csvData.data[0][5]} />
+        <CriteriaSelect
+          criteria={csvData.data[0]}
+          setSelectedCriteria={setSelectedCriteria}
+          selectedCriteria={selectedCriteria}
+        />
+      )}
+      {csvData && selectedCriteria && (
+        <ChartPie items={csvData.data} criteria={selectedCriteria} />
       )}
     </>
   );

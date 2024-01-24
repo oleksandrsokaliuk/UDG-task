@@ -3,6 +3,9 @@ import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 
 const ChartPie = ({ items, criteria }) => {
+  useEffect(() => {
+    console.log({ criteriaChart: criteria });
+  }, []);
   const getRandomColor = () => {
     return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
       Math.random() * 256
