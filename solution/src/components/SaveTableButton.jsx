@@ -5,7 +5,7 @@ const SaveTableButton = ({
 }) => {
   return (
     <button
-      className="save-btn"
+      className="btn save-btn"
       disabled={!isSaveButtonEnabled}
       onClick={() => {
         setIsSaveButtonEnabled(false);

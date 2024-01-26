@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MdDelete } from "react-icons/md";
 
 const TableItems = ({
   currentItems,
@@ -6,17 +7,6 @@ const TableItems = ({
   setIsSaveButtonEnabled,
   itemOffset,
 }) => {
-  const areArraysEqual = (arr1, arr2) => {
-    if (arr1.length !== arr2.length) {
-      return false;
-    }
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] !== arr2[i]) {
-        return false;
-      }
-    }
-    return true;
-  };
   return (
     <>
       {currentItems &&
@@ -40,9 +30,16 @@ const TableItems = ({
                         });
                         console.log({ newData });
                         console.log({ prevData: prevData.data });
-                        JSON.stringify(prevData.data) !==
-                          JSON.stringify(newData) &&
-                          setIsSaveButtonEnabled(true);
+                        if (
+                          prevData.data !== undefined &&
+                          newData !== undefined
+                        ) {
+                          console.log({ first: prevData.data });
+                          console.log({ second: newData });
+                          JSON.stringify(prevData.data) !==
+                            JSON.stringify(newData) &&
+                            setIsSaveButtonEnabled(true);
+                        }
                         return { data: newData };
                       });
                     }}
@@ -51,6 +48,7 @@ const TableItems = ({
               );
             })}
             <button
+              className="btn-delete"
               onClick={() => {
                 console.log({ number: itemOffset + idx });
                 setCsvData((prevData) => {
@@ -61,7 +59,7 @@ const TableItems = ({
                 });
               }}
             >
-              Delete
+              <MdDelete />
             </button>
           </tr>
         ))}

@@ -1,0 +1,30 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(163, 163, 191);
+  padding: 1.4rem 0;
+}
+
+.header-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  color: #4242a6;
+  letter-spacing: 0.2rem;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 600;
+  font-style: italic;
+}

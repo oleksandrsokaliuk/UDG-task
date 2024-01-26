@@ -56,8 +56,8 @@ const Table = ({
           </tbody>
         </table>
         <div className="btns-container">
-          <button className="btn-add" onClick={addNewItem}>
-            Add New Item
+          <button className="btn btn-add" onClick={addNewItem}>
+            +
           </button>
           <SaveTableButton
             isSaveButtonEnabled={isSaveButtonEnabled}
@@ -68,11 +68,11 @@ const Table = ({
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={3}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="<"
         renderOnZeroPageCount={null}
         containerClassName={"pagination-container"}
         activeClassName={"active-page"}

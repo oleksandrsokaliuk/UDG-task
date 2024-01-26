@@ -48,34 +48,45 @@ function App() {
   }, [csvData]);
 
   const [selectedCriteria, setSelectedCriteria] = useState();
+  const [isPopupVisible, setPopupVisible] = useState(false);
   useEffect(() => {
     console.log({ selectedCriteria });
   }, [selectedCriteria]);
 
   return (
     <>
-      {/* <Pie
-  data={...}
-/> */}
-      {csvData !== undefined && (
-        <Table
-          tableData={csvData}
-          setCsvData={setCsvData}
-          itemsPerPage={10}
-          postNewData={postNewData}
-          csvData={csvData}
-        />
-      )}
-      {csvData && (
-        <CriteriaSelect
-          criteria={csvData.data[0]}
-          setSelectedCriteria={setSelectedCriteria}
-          selectedCriteria={selectedCriteria}
-        />
-      )}
-      {csvData && selectedCriteria && (
-        <ChartPie items={csvData.data} criteria={selectedCriteria} />
-      )}
+      <div className="header-container">
+        <header>
+          <h1>Probeaufgabe 1 - CSV Verarbeitung</h1>
+          <h2>Oleksandr Sokaliuk</h2>
+        </header>
+        {csvData && (
+          <Table
+            tableData={csvData}
+            setCsvData={setCsvData}
+            itemsPerPage={10}
+            postNewData={postNewData}
+            csvData={csvData}
+          />
+        )}
+        {csvData && (
+          <CriteriaSelect
+            criteria={csvData.data[0]}
+            setSelectedCriteria={setSelectedCriteria}
+            selectedCriteria={selectedCriteria}
+            isPopupVisible={isPopupVisible}
+            setPopupVisible={setPopupVisible}
+          />
+        )}
+      </div>
+      {csvData &&
+        selectedCriteria &&
+        selectedCriteria.map((criteria) => (
+          <>
+            <h3>{criteria}</h3>
+            <ChartPie items={csvData.data} criteria={criteria} />
+          </>
+        ))}
     </>
   );
 }

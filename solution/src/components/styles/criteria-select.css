@@ -1,0 +1,90 @@
+.dgrm-label {
+  border: 1px solid white;
+  width: 250px;
+  text-align: center;
+  cursor: pointer;
+  align-self: center;
+  background-color: rgb(108, 65, 166, 0.8);
+  padding: 10px 30px;
+  margin: 20px 0;
+  transition: all 0.4s ease;
+}
+
+.dgrm-label:hover {
+  background-color: rgb(108, 65, 166);
+}
+
+.criteria-container {
+  position: absolute;
+  width: 50vw;
+  min-height: 60vh;
+  max-height: 85vh;
+  background-color: rgb(229, 229, 225);
+  padding: 0 20px;
+  /* transform: translateX(50%); */
+  /* left: 50%; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  left: 25%;
+  bottom: 20%;
+}
+
+.criteria-visible {
+  display: flex;
+}
+
+.criteria-hidden {
+  display: none;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: rgb(66, 66, 166);
+  color: rgb(229, 229, 225);
+}
+
+.checkbox-container label {
+  cursor: pointer;
+  border: 2px solid rgb(66, 66, 166);
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: rgb(66, 66, 166);
+}
+
+.criteria-container > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.criteria-container > h3 {
+  margin: 20px 0;
+  color: rgb(66, 66, 166);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+input[type="submit"] {
+  align-self: center;
+  background-color: rgb(108, 65, 166, 0.7);
+  padding: 15px 30px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: all 0.4s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(108, 65, 166);
+}
