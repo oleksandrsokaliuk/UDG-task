@@ -3,6 +3,7 @@ import TableItems from "./TableItems";
 import "./styles/table.css";
 import ReactPaginate from "react-paginate";
 import SaveTableButton from "./SaveTableButton";
+import Loader from "./Loader";
 
 const Table = ({
   tableData,
@@ -10,6 +11,8 @@ const Table = ({
   setCsvData,
   itemsPerPage,
   postNewData,
+  isResponseSuccess,
+  isBtnLabelSaved,
 }) => {
   const { data } = tableData;
   const withoutHeader = data && data.slice(1);
@@ -22,8 +25,6 @@ const Table = ({
     const newOffset = (event.selected * itemsPerPage) % withoutHeader.length;
     setItemOffset(newOffset);
   };
-
-  const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(false);
 
   const addNewItem = () => {
     const emptyValues = Array.from(
@@ -50,7 +51,6 @@ const Table = ({
             <TableItems
               currentItems={currentItems}
               setCsvData={setCsvData}
-              setIsSaveButtonEnabled={setIsSaveButtonEnabled}
               itemOffset={itemOffset}
             />
           </tbody>
@@ -59,11 +59,14 @@ const Table = ({
           <button className="btn btn-add" onClick={addNewItem}>
             +
           </button>
-          <SaveTableButton
-            isSaveButtonEnabled={isSaveButtonEnabled}
-            setIsSaveButtonEnabled={setIsSaveButtonEnabled}
-            postNewData={postNewData}
-          />
+          {isResponseSuccess ? (
+            <SaveTableButton
+              postNewData={postNewData}
+              isBtnLabelSaved={isBtnLabelSaved}
+            />
+          ) : (
+            <Loader />
+          )}
         </div>
       </div>
       <ReactPaginate

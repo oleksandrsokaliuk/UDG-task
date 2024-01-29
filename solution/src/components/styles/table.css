@@ -64,6 +64,15 @@ th {
   color: rgba(66, 66, 166);
 }
 
+td input {
+  transition: all 0.4s ease;
+}
+
+td:hover input {
+  background-color: rgba(227, 227, 255) !important;
+  color: rgba(66, 66, 166);
+}
+
 tbody > tr:nth-child(odd),
 tbody > tr:nth-child(odd) input {
   background: rgba(66, 66, 166);
@@ -109,7 +118,7 @@ tbody > tr:nth-child(even) input {
 .save-btn {
   width: 40px;
   height: 100%;
-  padding: 15px 50px;
+  padding: 15px 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,12 +128,15 @@ tbody > tr:nth-child(even) input {
   font-size: 1.2rem;
 }
 
-.save-btn:hover {
+.isBtnLabel {
+  background-color: #4bb543;
   opacity: 1;
+  color: white;
+  border: none;
 }
 
-.save-btn:disabled {
-  display: none;
+.save-btn:hover {
+  opacity: 1;
 }
 
 .btn-delete {

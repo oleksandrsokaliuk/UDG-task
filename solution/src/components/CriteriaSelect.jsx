@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./styles/criteria-select.css";
 
 const CriteriaSelect = ({
@@ -7,14 +8,17 @@ const CriteriaSelect = ({
   isPopupVisible,
   setPopupVisible,
 }) => {
+  useEffect(() => {
+    console.log({ selectedCriteria });
+    console.log({ dlina: selectedCriteria?.length });
+  }, [selectedCriteria]);
   return (
     <>
       <button
         className="dgrm-label"
-        for="criteria"
-        onClick={() =>
-          setPopupVisible((prevState) => (!prevState ? true : false))
-        }
+        onClick={() => {
+          setPopupVisible((prevState) => (!prevState ? true : false));
+        }}
       >
         Diagramm(e) erstellen
       </button>
@@ -62,15 +66,6 @@ const CriteriaSelect = ({
           <input type="submit" value="Erstellen" />
         </form>
       </div>
-      {/* <select
-        name="criteria"
-        id="criteria"
-        value={selectedCriteria}
-        onChange={(e) => setSelectedCriteria(e.target.value)}
-      >
-        <option selected="selected">{"<--select criteria-->"}</option>
-        
-      </select> */}
     </>
   );
 };

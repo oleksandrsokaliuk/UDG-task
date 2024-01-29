@@ -1,18 +1,12 @@
-const SaveTableButton = ({
-  isSaveButtonEnabled,
-  setIsSaveButtonEnabled,
-  postNewData,
-}) => {
+const SaveTableButton = ({ postNewData, isBtnLabelSaved }) => {
   return (
     <button
-      className="btn save-btn"
-      disabled={!isSaveButtonEnabled}
+      className={`btn save-btn ${isBtnLabelSaved && "isBtnLabel"}`}
       onClick={() => {
-        setIsSaveButtonEnabled(false);
         postNewData();
       }}
     >
-      Speichern
+      {isBtnLabelSaved ? "Gespeichert" : "Speichern"}
     </button>
   );
 };

@@ -23,23 +23,7 @@ const TableItems = ({
                         const newData = [...prevData.data];
                         newData[idx + 1] = [...newData[idx + 1]];
                         newData[idx + 1][index] = e.target.value;
-                        console.log({
-                          areEqual:
-                            JSON.stringify(prevData.data) ===
-                            JSON.stringify(newData),
-                        });
-                        console.log({ newData });
-                        console.log({ prevData: prevData.data });
-                        if (
-                          prevData.data !== undefined &&
-                          newData !== undefined
-                        ) {
-                          console.log({ first: prevData.data });
-                          console.log({ second: newData });
-                          JSON.stringify(prevData.data) !==
-                            JSON.stringify(newData) &&
-                            setIsSaveButtonEnabled(true);
-                        }
+
                         return { data: newData };
                       });
                     }}

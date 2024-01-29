@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  fs.writeFile("./../Artikel_new.csv", req.body.data, (err) => {
+  fs.writeFile("./../Artikel.csv", req.body.data, (err) => {
     if (err) throw err;
     res.send("File is created");
   });
