@@ -11,7 +11,7 @@ cd UDG-task
 ```
 
 ```
-$ cd solution
+cd solution
 ```
 
 ```
