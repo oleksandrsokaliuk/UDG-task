@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 
-const TableItems = ({
-  currentItems,
-  setCsvData,
-  setIsSaveButtonEnabled,
-  itemOffset,
-}) => {
+const TableItems = ({ currentItems, setCsvData, itemOffset }) => {
   return (
     <>
       {currentItems &&
@@ -21,9 +16,10 @@ const TableItems = ({
                     onBlur={(e) => {
                       setCsvData((prevData) => {
                         const newData = [...prevData.data];
-                        newData[idx + 1] = [...newData[idx + 1]];
-                        newData[idx + 1][index] = e.target.value;
-
+                        newData[itemOffset + idx + 1] = [
+                          ...newData[itemOffset + idx + 1],
+                        ];
+                        newData[itemOffset + idx + 1][index] = e.target.value;
                         return { data: newData };
                       });
                     }}
@@ -34,9 +30,7 @@ const TableItems = ({
             <button
               className="btn-delete"
               onClick={() => {
-                console.log({ number: itemOffset + idx });
                 setCsvData((prevData) => {
-                  console.log({ prevData: prevData.data });
                   const newItems = [...prevData.data];
                   newItems.splice(itemOffset + 1 + idx, 1);
                   return { data: newItems };

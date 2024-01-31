@@ -28,21 +28,16 @@ function App() {
       console.error(error);
     }
   };
-  useEffect(() => {
-    console.log({ isBtnLabelSaved });
-  }, [isBtnLabelSaved]);
   const postNewData = async () => {
     setIsResponseSuccess(false);
     const jsonString = JSON.stringify(csvData.data);
     const dataCSV = jsonToCSV(jsonString);
-    console.log(dataCSV);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER}${process.env.REACT_APP_SERVER_PORT}/`,
         { data: dataCSV }
       );
       response.status === 200 && setIsResponseSuccess(true);
-      console.log({ POSTresponse: response });
       response.status === 200 && setIsBtnLabelSaved(true);
       setTimeout(() => setIsBtnLabelSaved(false), 3000);
     } catch (error) {
@@ -53,15 +48,8 @@ function App() {
     getDataFromFile();
   }, []);
 
-  useEffect(() => {
-    console.log({ csvData });
-  }, [csvData]);
-
   const [selectedCriteria, setSelectedCriteria] = useState();
   const [isPopupVisible, setPopupVisible] = useState(false);
-  useEffect(() => {
-    console.log({ selectedCriteria });
-  }, [selectedCriteria]);
 
   return (
     <>

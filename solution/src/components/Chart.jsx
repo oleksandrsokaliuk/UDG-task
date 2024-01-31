@@ -4,82 +4,71 @@ import "./styles/chart.css";
 import { Pie } from "react-chartjs-2";
 
 const ChartPie = ({ items, criteria }) => {
-  useEffect(() => {
-    console.log({ criteriaChart: criteria });
-  }, []);
-
   const getRandomColor = () => {
     return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
       Math.random() * 256
     )}, ${Math.floor(Math.random() * 256)})`;
-  };
+  }; // funktion creates one color
 
-  const [backgroundColors, setBackgroundColors] = useState(() =>
-    Array.from({ length: items.length - 1 }, getRandomColor)
-  );
+  const allCriterias = items
+    .slice(1)
+    .map((item) => item[items[0].findIndex((element) => element === criteria)]); // finds all criterias
+
+  const uniqueSelectedCriteria = [...new Set(allCriterias)].filter(
+    (criteria) => criteria !== undefined && criteria !== ""
+  ); // finds all uniq criterias
+
+  const getColorsForEach = () =>
+    uniqueSelectedCriteria.map(() => getRandomColor());
+
+  const [diagrammColors, setDiagrammColors] = useState(); // gets uniq color for each criteria
+
+  const uniq = items && items[0].findIndex((el) => el === criteria);
+
+  const [itemsQuantity, setItemsQuantity] = useState([]);
+  const [itemPercents, setItemsPercents] = useState([]);
+
+  const calculateQuantity = () => {
+    const quantity = uniqueSelectedCriteria.map(
+      (uniqCriteria) =>
+        items.filter((element) => uniqCriteria === element[uniq]).length
+    );
+    setItemsQuantity(quantity);
+  }; // defines quantity of all elements according to each criteria
 
   useEffect(() => {
-    setBackgroundColors((prevColors) =>
-      Array.from(
-        { length: items.length - 1 },
-        (_, index) => prevColors[index] || getRandomColor()
-      )
+    calculateQuantity();
+    setDiagrammColors(() => getColorsForEach());
+  }, [criteria, items]);
+
+  const calculatePercents = () => {
+    const percents = itemsQuantity.map((num) =>
+      (
+        (num * 100) /
+        itemsQuantity.reduce((partialSum, a) => partialSum + a, 0)
+      ).toFixed(2)
     );
-  }, [items.length]);
+    setItemsPercents(percents);
+  };
 
-  const selectedCriteria = items
-    .slice(1)
-    .map((item) => item[items[0].findIndex((element) => element === criteria)]);
-
-  const uniqueSelectedCriteria = [...new Set(selectedCriteria)];
-
-  const selectedCriteriasItems = uniqueSelectedCriteria.map((gender) => {
-    const genderWithoutUndefined = selectedCriteria
-      .map((gendParent) => (gendParent === undefined ? "" : gendParent))
-      .filter((g) => g === gender && g !== "" && g !== "Nicht angegeben");
-    const count = genderWithoutUndefined.length;
-
-    return { genderWithoutUndefined, count };
-  });
-
-  const filteredLabels = selectedCriteriasItems.map((item) =>
-    item.genderWithoutUndefined.length > 0
-      ? item.genderWithoutUndefined[0]
-      : undefined
-  );
-
-  const filteredLabelsNotNull = filteredLabels.filter(
-    (label) => label !== undefined
-  );
-
-  const replaceEmpty = (value) =>
-    value !== undefined && value !== "" ? value : "Nicht angegeben";
-
-  const total = selectedCriteriasItems.reduce(
-    (acc, item) => acc + item.count,
-    0
-  );
+  useEffect(() => {
+    calculatePercents();
+  }, [itemsQuantity]);
 
   return (
     <Pie
       data={{
-        labels: filteredLabelsNotNull.map((label) => replaceEmpty(label)),
+        labels: uniqueSelectedCriteria.map((label) => label),
         datasets: [
           {
             label: `Anzahl der Artikel nach ${criteria}`,
-            data: selectedCriteriasItems.map((item) => {
-              console.log({ itemQuantity: item.count });
-              console.log({ selectedCriteriasItems });
-              return item.count;
-            }),
-            backgroundColor: backgroundColors,
+            data: itemsQuantity.map((item) => item),
+            backgroundColor: diagrammColors,
           },
           {
-            label: "Prozentsatz",
-            data: selectedCriteriasItems.map((item) =>
-              ((item.count / total) * 100).toFixed(2)
-            ),
-            backgroundColor: backgroundColors,
+            label: `Prozentsatz der Artikel nach ${criteria}`,
+            data: itemPercents.map((item) => item),
+            backgroundColor: diagrammColors,
           },
         ],
       }}

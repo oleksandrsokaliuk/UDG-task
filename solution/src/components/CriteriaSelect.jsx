@@ -8,10 +8,7 @@ const CriteriaSelect = ({
   isPopupVisible,
   setPopupVisible,
 }) => {
-  useEffect(() => {
-    console.log({ selectedCriteria });
-    console.log({ dlina: selectedCriteria?.length });
-  }, [selectedCriteria]);
+  useEffect(() => {}, [selectedCriteria]);
   return (
     <>
       <button

@@ -32,7 +32,6 @@ const Table = ({
       () => undefined
     );
     setCsvData((prevItems) => {
-      console.log({ prevItems: prevItems.data });
       const newItems = [...prevItems.data];
       newItems.splice(endOffset, 0, emptyValues);
       return { data: newItems };
