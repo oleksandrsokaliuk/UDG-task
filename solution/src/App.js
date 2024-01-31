@@ -84,7 +84,7 @@ function App() {
       {csvData && selectedCriteria && (
         <div className="charts-container">
           {selectedCriteria.map((criteria) => (
-            <div className="chart-container">
+            <div className="chart-container" key={criteria}>
               <h3>{criteria}</h3>
               <ChartPie items={csvData.data} criteria={criteria} />
             </div>

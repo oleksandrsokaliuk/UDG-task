@@ -27,18 +27,20 @@ const TableItems = ({ currentItems, setCsvData, itemOffset }) => {
                 </td>
               );
             })}
-            <button
-              className="btn-delete"
-              onClick={() => {
-                setCsvData((prevData) => {
-                  const newItems = [...prevData.data];
-                  newItems.splice(itemOffset + 1 + idx, 1);
-                  return { data: newItems };
-                });
-              }}
-            >
-              <MdDelete />
-            </button>
+            <td className="btn-td">
+              <button
+                className="btn-delete"
+                onClick={() => {
+                  setCsvData((prevData) => {
+                    const newItems = [...prevData.data];
+                    newItems.splice(itemOffset + 1 + idx, 1);
+                    return { data: newItems };
+                  });
+                }}
+              >
+                <MdDelete />
+              </button>
+            </td>
           </tr>
         ))}
     </>

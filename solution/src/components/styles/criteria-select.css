@@ -18,7 +18,7 @@
 .criteria-container {
   position: absolute;
   width: 50vw;
-  min-height: 60vh;
+  min-height: 60%;
   max-height: 85vh;
   background-color: rgb(229, 229, 225);
   padding: 0 20px;
@@ -42,7 +42,7 @@
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 35px;
   justify-content: space-between;
 }
 
@@ -88,4 +88,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: rgb(108, 65, 166);
+}
+
+.selected-crit-cont {
 }

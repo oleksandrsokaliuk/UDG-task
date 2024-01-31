@@ -47,7 +47,7 @@ const CriteriaSelect = ({
                 return;
               }
               return (
-                <>
+                <div className="selected-crit-cont" key={element}>
                   <input
                     value={element}
                     type="checkbox"
@@ -56,7 +56,7 @@ const CriteriaSelect = ({
                     key={element}
                   />
                   <label htmlFor={element}> {element}</label>
-                </>
+                </div>
               );
             })}
           </div>

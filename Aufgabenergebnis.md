@@ -1,43 +1,49 @@
-# Aufgabenergebnis
+# Projekt-Dokumentation
 
-## Eingesetzte Technologien / Frameworks
+## Klone das Repository per SSH und starte den Server und den Client:
 
-Folgende Technologien / Frameworks setze ich in meinem Projekt ein:
+`git clone git@github.com:oleksandrsokaliuk/UDG-task.git`
+`cd UDG-task`
+`$ cd solution`
+`npm i`
+`npm start`
 
-- JavaScript / jQuery
-- PHP / Symfony
-- ...
+## Bibliotheken und Abhängigkeiten.
 
-Ich habe mich für jQuery entschieden, weil ...
+### Warum JavaScript und React:
 
-## Eingesetzte 3rd Party Libraries
+JavaScript und React wurden für dieses Projekt gewählt, da sie während des Bootcamps erlernt wurden. Diese Technologien sind meine Hauptentwicklungswerkzeuge, in denen ich über umfangreiche Erfahrung verfüge und in denen ich bequem Code schreibe.
 
-Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein: (falls keine, Tabelle entfernen und begründen warum)
+### Warum Express und Axios:
 
-Name | Begründung
---- | ---
-[moment.js](https://momentjs.com/) | Zur Berechnung von Datumswerten und Umwandlung von Formaten.
-[Bootstrap](https://getbootstrap.com/) | Einfaches RWD Framework zur Gestaltung des Frontends
+- **Express**
+  Wurde verwendet, um einen Server zu erstellen, da er den direkten Zugriff auf das Dateisystem ermöglicht. Node.js ermöglicht einen direkten Zugriff auf das Dateisystem.
+- **Axios**
+  Wird für die einfache Ausführung von HTTP-Anfragen zwischen Client und Server verwendet.
 
-## Installation / Ausführen des Projektes
+### Warum **body-parser** und **cors**:
 
-Beschreibe, wie wir uns das Projekt lokal anschauen können.
+- **body-parser**
+  Dient als Middleware zur Verarbeitung von Daten, die vom Client übermittelt werden. Dies ist besonders wichtig für die Arbeit mit Daten, insbesondere beim Austausch von umfangreichen Informationen.
+- **cors**
+  Wird verwendet, um Cross-Origin-Anfragen zu ermöglichen und die Sicherheit der Interaktion zwischen Server und Client zu gewährleisten.
 
-Zum Beispiel:
+### Zusätzliche Bibliotheken:
 
----
+- **react-papaparse**
+  Wird verwendet, um Daten in CSV-Dateien zu manipulieren, die auf dem Server gelesen werden.
+- **chart.js** und **react-chartjs-2**
+  Wurden angewendet, um Diagramme und Grafiken zur Visualisierung von Daten zu erstellen.
+- **react-icons**
+  Wird verwendet, um Icons schnell zu laden.
+- **react-loader-spinner**
+  Wurde angewendet, um vorhandene Ladekomponenten ohne Erstellung neuer zu verwenden.
+- **react-paginate**
+  Wird eingesetzt, um eine Paginierung zu erstellen und die Benutzeroberflächenbelastung bei der Arbeit mit umfangreichen Datenmengen zu optimieren.
+- **concurrently**
+  Wird verwendet, um React-Skripte zu kombinieren, um Server und Client bequem mit einem Skript zu starten.
 
-Folgende Komponenten müssen lokal installiert sein:
+### Gebrauchsanleitung mit GIF:
 
-- [nodejs](https://nodejs.org/en/) v13.2.0
-- [.NET Core](https://dotnet.microsoft.com/download) v3.1
-
-Um das Projekt lokal auszuführen, folgendes in der Commandline / Bash eingeben:
-
-```console
-$ git clone <linktorepository> udg-probeaufgabe
-$ cd udg-probeaufgabe
-$ npm install
-$ npm run start
-```
----
+_Für Ihre Bequemlichkeit finden Sie unten ein GIF, das zeigt, wie Sie die Benutzeroberfläche des Projekts verwenden._
+![Verwendung der Oberfläche](./presentation.gif)
