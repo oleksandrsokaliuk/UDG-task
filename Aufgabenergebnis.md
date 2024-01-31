@@ -3,23 +3,23 @@
 ## Klone das Repository per SSH und starte den Server und den Client:
 
 ```
-`git clone git@github.com:oleksandrsokaliuk/UDG-task.git`
+git clone git@github.com:oleksandrsokaliuk/UDG-task.git
 ```
 
 ```
-`cd UDG-task`
+cd UDG-task
 ```
 
 ```
-`$ cd solution`
+$ cd solution
 ```
 
 ```
-`npm i`
+npm i
 ```
 
 ```
-`npm start`
+npm start
 ```
 
 ## Bibliotheken und Abhängigkeiten.
@@ -30,32 +30,32 @@ JavaScript und React wurden für dieses Projekt gewählt, da sie während des Bo
 
 ### Warum Express und Axios:
 
-- **Express**
-  Wurde verwendet, um einen Server zu erstellen, da er den direkten Zugriff auf das Dateisystem ermöglicht. Node.js ermöglicht einen direkten Zugriff auf das Dateisystem.
-- **Axios**
-  Wird für die einfache Ausführung von HTTP-Anfragen zwischen Client und Server verwendet.
+- _**Express**_
+  wurde verwendet, um einen Server zu erstellen, da er den direkten Zugriff auf das Dateisystem ermöglicht. Node.js ermöglicht einen direkten Zugriff auf das Dateisystem.
+- _**Axios**_
+  wird für die einfache Ausführung von HTTP-Anfragen zwischen Client und Server verwendet.
 
-### Warum **body-parser** und **cors**:
+### Warum _**body-parser**_ und _**cors**_:
 
-- **body-parser**
-  Dient als Middleware zur Verarbeitung von Daten, die vom Client übermittelt werden. Dies ist besonders wichtig für die Arbeit mit Daten, insbesondere beim Austausch von umfangreichen Informationen.
-- **cors**
-  Wird verwendet, um Cross-Origin-Anfragen zu ermöglichen und die Sicherheit der Interaktion zwischen Server und Client zu gewährleisten.
+- _**body-parser**_
+  dient als Middleware zur Verarbeitung von Daten, die vom Client übermittelt werden. Dies ist besonders wichtig für die Arbeit mit Daten, insbesondere beim Austausch von umfangreichen Informationen.
+- _**cors**_
+  wird verwendet, um Cross-Origin-Anfragen zu ermöglichen und die Sicherheit der Interaktion zwischen Server und Client zu gewährleisten.
 
 ### Zusätzliche Bibliotheken:
 
-- **react-papaparse**
-  Wird verwendet, um Daten in CSV-Dateien zu manipulieren, die auf dem Server gelesen werden.
-- **chart.js** und **react-chartjs-2**
-  Wurden angewendet, um Diagramme und Grafiken zur Visualisierung von Daten zu erstellen.
-- **react-icons**
-  Wird verwendet, um Icons schnell zu laden.
-- **react-loader-spinner**
-  Wurde angewendet, um vorhandene Ladekomponenten ohne Erstellung neuer zu verwenden.
-- **react-paginate**
-  Wird eingesetzt, um eine Paginierung zu erstellen und die Benutzeroberflächenbelastung bei der Arbeit mit umfangreichen Datenmengen zu optimieren.
-- **concurrently**
-  Wird verwendet, um React-Skripte zu kombinieren, um Server und Client bequem mit einem Skript zu starten.
+- _**react-papaparse**_
+  wird verwendet, um Daten in CSV-Dateien zu manipulieren, die auf dem Server gelesen werden.
+- _**chart.js**_ und _**react-chartjs-2**_
+  wurden angewendet, um Diagramme und Grafiken zur Visualisierung von Daten zu erstellen.
+- _**react-icons**_
+  wird verwendet, um Icons schnell zu laden.
+- _**react-loader-spinner**_
+  wurde angewendet, um vorhandene Ladekomponenten ohne Erstellung neuer zu verwenden.
+- _**react-paginate**_
+  wird eingesetzt, um eine Paginierung zu erstellen und die Benutzeroberflächenbelastung bei der Arbeit mit umfangreichen Datenmengen zu optimieren.
+- _**concurrently**_
+  wird verwendet, um React-Skripte zu kombinieren, um Server und Client bequem mit einem Skript zu starten.
 
 ### Gebrauchsanleitung mit GIF:
 
