@@ -60,4 +60,4 @@ JavaScript und React wurden für dieses Projekt gewählt, da sie während des Bo
 ### Gebrauchsanleitung mit GIF:
 
 _Für Ihre Bequemlichkeit finden Sie unten ein GIF, das zeigt, wie Sie die Benutzeroberfläche des Projekts verwenden._
-![Verwendung der Oberfläche](./../presentation.gif)
+![Verwendung der Oberfläche](/presentation.gif)
