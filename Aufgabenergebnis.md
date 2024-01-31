@@ -2,11 +2,25 @@
 
 ## Klone das Repository per SSH und starte den Server und den Client:
 
+```
 `git clone git@github.com:oleksandrsokaliuk/UDG-task.git`
+```
+
+```
 `cd UDG-task`
+```
+
+```
 `$ cd solution`
+```
+
+```
 `npm i`
+```
+
+```
 `npm start`
+```
 
 ## Bibliotheken und Abhängigkeiten.
 
@@ -46,4 +60,4 @@ JavaScript und React wurden für dieses Projekt gewählt, da sie während des Bo
 ### Gebrauchsanleitung mit GIF:
 
 _Für Ihre Bequemlichkeit finden Sie unten ein GIF, das zeigt, wie Sie die Benutzeroberfläche des Projekts verwenden._
-![Verwendung der Oberfläche](./presentation.gif)
+![Verwendung der Oberfläche](./../presentation.gif)
